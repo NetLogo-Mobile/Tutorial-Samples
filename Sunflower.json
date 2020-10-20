@@ -1,0 +1,728 @@
+ {
+  "Sections": [
+    {
+      "Handlers": [],
+      "Name": "Introduction",
+      "Activated": true,
+      "Initializer": "workspace:play\nworkspace:set-speed 1\nworkspace:hide \"Everything\"\ntutorial:set \"WidgetTest\" false\ntutorial:set \"WidgetTest2\" false\ntutorial:set \"WidgetTest3\" false\ntutorial:set \"WidgetTest4\" false\ntutorial:show-dialog \"Introduction\" false",
+      "Finalizer": "tutorial:hide-dialog \"Introduction\""
+    },
+    {
+      "Name": "WhatIsIt",
+      "Initializer": "workspace:hide \"Everything\"\ntutorial:show-dialog \"WhatIsIt\" false",
+      "Finalizer": "tutorial:hide-dialog \"WhatIsIt\""
+    },
+    {
+      "Name": "HowItWorks",
+      "Initializer": "workspace:hide \"Everything\"\ntutorial:show-dialog \"HowItWorks\" false",
+      "Finalizer": "tutorial:hide-dialog \"HowItWorks\""
+    },
+    {
+      "Name": "ShowWidget",
+      "Initializer": "workspace:hide \"Everything\"\ntutorial:show-dialog \"ShowWidget\" false",
+      "Activated": false,
+      "Finalizer": "tutorial:hide-dialog \"ShowWidget\""
+    },
+    {
+      "Name": "WidgetTest",
+      "Initializer": "tutorial:show-dialog \"WidgetTest\" false",
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest\"\ntutorial:set \"WidgetTest\" true"
+    },
+    {
+      "Name": "WidgetTest2",
+      "Initializer": "tutorial:show-dialog \"WidgetTest2\" false",
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest2\"\ntutorial:set \"WidgetTest2\" true"
+    },
+    {
+      "Name": "WidgetTest3",
+      "Initializer": "tutorial:show-dialog \"WidgetTest3\" false",
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest3\"\ntutorial:set \"WidgetTest3\" true"
+    },
+    {
+      "Name": "WidgetTest4",
+      "Initializer": "tutorial:show-dialog \"WidgetTest4\" false",
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest4\"\ntutorial:set \"WidgetTest4\" true"
+    },
+    {
+      "Name": "ThingsToTry",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry\""
+    },
+    {
+      "Name": "ThingsToTry2",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry2\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry2\""
+    },
+    {
+      "Name": "ThingsToTry3",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry3\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry3\""
+    },
+    {
+      "Name": "ThingsToTry4",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry4\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry4\""
+    },
+    {
+      "Name": "ThingsToTry5",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry5\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry5\""
+    },
+    {
+      "Name": "Congratulation",
+      "Initializer": "workspace:hide \"Everything\"\ntutorial:show-dialog \"Congratulation\" false",
+      "Activated": false,
+      "Finalizer": "tutorial:hide-dialog \"Congratulation\""
+    },
+    {
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Appropriate-Position",
+          "Callback": "tutorial:show-dialog \"Appropriate-Position\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Clock-tick",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Clock-tick\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Clockwise",
+          "Callback": "tutorial:show-dialog \"Clockwise\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Counterclockwise",
+          "Callback": "tutorial:show-dialog \"Counterclockwise\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Emergent-process",
+          "Callback": "tutorial:show-dialog \"Emergent-process\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Limit",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Limit\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Golden-Ratio",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Golden-Ratio\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Fibonacci",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Fibonacci\" false",
+          "Repeated": true
+        }
+      ],
+      "Name": "Glossary",
+      "Initializer": "; So this guy is here to ensure that all glossary triggers are activated",
+      "Activated": true
+    }
+  ],
+  "Dialogs": [
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:go \"WhatIsIt\""
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Let me try it first!"
+        }
+      ],
+      "Handlers": [],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Introduction",
+      "Content": "The interlocking spirals found in the <color=maroon>seeds</color>, <color=red>petals</color> and even <color=maroon>branches</color> of many <color=green>plants</color> occur naturally through the growth of the flower. This model attempts to demonstrate the growth of these naturally occurring spirals.",
+      "Title": "Welcome to the Sunflower Model! "
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 2,
+          "Behavior": 1,
+          "Text": "Want to know more? Click here for higher level reading!",
+          "Callback": "tutorial:show-dialog \"Fibonacci-Angle\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Callback": "tutorial:back",
+          "Text": "Back "
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "WhatIsIt",
+      "Title": "Welcome to the Sunflower Model! ",
+      "Content": "When a new <color=maroon>seeds</color> emerges, the older ones grow slightly and move further from the center--the source--and the youngest <color=maroon>seeds</color> finds the largest gap between existing <color=maroon>seeds</color>, in which it can grow. This gap can be found by turning <trigger=counterclockwise>counterclockwise</trigger>."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"WhatIsIt\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "The angle made by this turn is a multiple of the <trigger=golden-ratio,olive>golden ratio</trigger> (1.618). The <color=olive>golden ratio</color>, based on the <trigger=fibonacci>Fibonacci series</trigger> (1, 1, 2, 3, 5, 8, 13...), equals the <trigger=limit>limit</trigger> of F(n)/F(n-1). Thus, these spirals can be mathematically generated, using the <color=olive>golden ratio</color>.",
+      "Name": "Fibonacci-Angle",
+      "Title": "The Golden Ratio "
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 2,
+          "Behavior": 1,
+          "Text": "Why do the <color=green>turtles</color> form a circle?",
+          "Callback": "tutorial:show-dialog \"Circle\" false"
+        },
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:go \"WhatIsIt\""
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "HowItWorks",
+      "Title": "How It Works",
+      "Content": "For each <trigger=clock-tick>clock-tick</trigger> , a new <color=green>turtle</color> (which can be seen as a <color=maroon>seed</color> or a <color=red>petal</color>) is created. As in nature, the <color=green>turtle</color> finds the <trigger=appropriate-position>appropriate position</trigger> and begins growing. All of the other existing <color=green>turtle</color> move forward and grow slightly, with each clock-tick."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"HowItWorks\" false"
+        }
+      ],
+      "DismissBehavior": 3,
+      "Anchor": 2,
+      "Name": "Circle",
+      "Content": "If a <color=green>turtle</color> gets too close to the edge of the world and too far from the center of the world, it dies. That is the reason they form a circular pattern . ",
+      "Title": "Death Beyond the Edge "
+    },
+    {
+      "Type": 1,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 1,
+          "Source": "Widgets",
+          "Type": "Show",
+          "Callback": "tutorial:go \"WidgetTest\" "
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 0,
+      "Spotlight": {
+        "Region": "Toolbar",
+        "Subregion": "Widgets"
+      },
+      "Name": "ShowWidget",
+      "Content": "Onwards! Let's continue exploring this model.\nClick on the highlighted button to open the <b>widgets panel</b>. ",
+      "Title": "Widgets Panel "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward",
+          "Filter": "tutorial:get \"WidgetTest\" = true"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 2,
+          "Source": "num-colors",
+          "Type": "change",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Spotlight": {
+        "Region": "Widgets",
+        "Subregion": "num-colors"
+      },
+      "Name": "WidgetTest",
+      "Title": "num-colors ",
+      "Content": "The NUM-COLORS slider controls how many <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color> the <color=green>turtles</color> can be. (Using this will make some of the spirals stand out more, other stand out less.) Try changing the value of <b><i>num-colors</i></b>."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 2,
+          "Type": "change",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:go \"WidgetTest3\"",
+          "Source": "step-size"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Spotlight": {
+        "Region": "Widget "
+      },
+      "Name": "WidgetTest2",
+      "Title": "step-size ",
+      "Content": "The STEP-SIZE slider controls how far away the <color=green>turtle</color> moves from the center, for each <trigger=clock-tick>clock-tick</trigger>. Try changing the value of <b><i>step-size</i></b>."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 2,
+          "Type": "change",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:go \"WidgetTest4\"",
+          "Source": "turn-increment"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "WidgetTest3",
+      "Title": "turn-increment ",
+      "Content": "The TURN-INCREMENT slider dictates the degree that each new <color=green>turtle</color> will turn to set its position in the spiral. Try changing the value of <b><i>turn-increment</i></b>.\n"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 2,
+          "Type": "click",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward",
+          "Source": "set turn-increment 0.618034",
+          "Repeated": false
+        },
+        {
+          "Source": "set turn-increment 0.617",
+          "Category": 2,
+          "Type": "click",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+        },
+        {
+          "Source": "set turn-increment 0.619",
+          "Category": 2,
+          "Type": "click",
+          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Spotlight": {
+        "Region": "Widget"
+      },
+      "Name": "WidgetTest4",
+      "Title": "set turn-increment ",
+      "Content": "The SET TURN-INCREMENT buttons help to set the TURN-INCREMENT slider to specific values at and around the <color=olive>golden ratio</color>. They are simply there to help achieve precision  that can be difficult with the slider. Try clicking on one of the buttons."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "I am ready to answer!",
+          "Callback": "tutorial:show-dialog \"ThingsToTry-Input\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Try it out!"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Questions": [],
+      "Name": "ThingsToTry",
+      "Content": "Think about the spirals  that you see. How many <b>different</b> ways can you make a pattern of spirals?"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Submit",
+          "Source": "ThingsToTry-1",
+          "Callback": "tutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "ThingsToTry-Input",
+      "Content": "Think about the spirals  that you see. How many <b>different</b> ways can you make a pattern of spirals?",
+      "Input": "ThingsToTry-1"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "I am ready to answer!",
+          "Callback": "tutorial:show-dialog \"ThingsToTry2-Input\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Try it out!"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry2",
+      "Title": "Things To Try",
+      "Content": "How does adding <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color>  change the spirals you see? Does this change the phenomena, or only what you see? \n"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Submit",
+          "Source": "ThingsToTry-2",
+          "Callback": "tutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "ThingsToTry2-Input",
+      "Content": "How does adding <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color>  change the spirals you see? Does this change the phenomena, or only what you see? \n",
+      "Input": "ThingsToTry-2"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Try it out!"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3",
+      "Title": "Things To Try",
+      "Content": "Try making the spirals go <trigger=counterclockwise>counterclockwise</trigger>. "
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Try it out!"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry4",
+      "Title": "Things to Try",
+      "Content": "Try making the model draw your favorite flower's <color=red>petal</color> or <color=maroon>seed</color> pattern . For example, a buttercup or columbine could be made by creating 5 large petals of the appropriate <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color>."
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 1,
+          "Text": "Try it out!"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry5",
+      "Title": "Things to Try",
+      "Content": "Here's a challenge! In nature, real plantsdon't have the <trigger=golden-ratio,olive>golden ratio</trigger> \"programmed\" into them. Rather, the spirals form as the result of an <trigger=emergent-process>emergent process</trigger>, described in Conway and Guy's book and other sources. Can you extend this model to capture this emergent process?"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "The number of clock-ticks times the turn 'increment'",
+      "Name": "Appropriate-Position",
+      "Title": "Appropriate position"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "The amount of seconds that have passed since the command 'reset-timer' was last run",
+      "Name": "Clock-tick",
+      "Title": "Clock-tick"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "In the direction to the typical forward movement of the hands of a clock",
+      "Name": "Clockwise",
+      "Title": "Clockwise"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "In the opposite direction to the typical forward movement of the hands of a clock",
+      "Name": "Counterclockwise",
+      "Title": "Counterclockwise"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "An process that is observed to have properties its parts do not have on their own (such properties or behaviors emerge only when the parts interact in a wider whole)",
+      "Name": "Emergent-process",
+      "Title": "Emergent process"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 2,
+      "Anchor": 2,
+      "Content": "Series of numbers where a number is the addition of the last two numbers, starting with 0, and 1",
+      "Name": "Fibonacci",
+      "Title": "Fibonacci series"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 2,
+      "Anchor": 2,
+      "Content": "A mathematical ratio commonly found in nature, and when used in a design, fosters organic and natural-looking compositions that are aesthetically pleasing to the eye",
+      "Name": "Golden-Ratio",
+      "Title": "Golden ratio"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "Value that a function (or sequence) approaches as the input approaches some value",
+      "Name": "Limit",
+      "Title": "Limit"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Callback": "tutorial:deactivate \"Congratulation\"",
+          "Text": "Exit Tutorial"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Spotlight": {},
+      "Name": "Congratulation",
+      "Content": "Well done! You have completed the Sunflower model tutorial! Time to play with the model!\n\nHave fun!",
+      "Title": "Congratulations! "
+    }
+  ]
+}
