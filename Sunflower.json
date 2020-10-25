@@ -4,7 +4,7 @@
       "Handlers": [],
       "Name": "Introduction",
       "Activated": true,
-      "Initializer": "workspace:play\nworkspace:set-speed 1\nworkspace:hide \"Everything\"\ntutorial:set \"WidgetTest\" false\ntutorial:set \"WidgetTest2\" false\ntutorial:set \"WidgetTest3\" false\ntutorial:set \"WidgetTest4\" false\ntutorial:show-dialog \"Introduction\" false",
+      "Initializer": "workspace:play\nworkspace:set-speed 1\nworkspace:hide \"Everything\"\ntutorial:set \"ShowWidget\" false\ntutorial:set \"WidgetTest\" false\ntutorial:set \"WidgetTest2\" false\ntutorial:set \"WidgetTest3\" false\ntutorial:set \"WidgetTest4\" false\ntutorial:show-dialog \"Introduction\" false",
       "Finalizer": "tutorial:hide-dialog \"Introduction\""
     },
     {
@@ -26,22 +26,22 @@
     {
       "Name": "WidgetTest",
       "Initializer": "tutorial:show-dialog \"WidgetTest\" false",
-      "Finalizer": "tutorial:hide-dialog \"WidgetTest\"\ntutorial:set \"WidgetTest\" true"
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest\""
     },
     {
       "Name": "WidgetTest2",
       "Initializer": "tutorial:show-dialog \"WidgetTest2\" false",
-      "Finalizer": "tutorial:hide-dialog \"WidgetTest2\"\ntutorial:set \"WidgetTest2\" true"
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest2\""
     },
     {
       "Name": "WidgetTest3",
       "Initializer": "tutorial:show-dialog \"WidgetTest3\" false",
-      "Finalizer": "tutorial:hide-dialog \"WidgetTest3\"\ntutorial:set \"WidgetTest3\" true"
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest3\""
     },
     {
       "Name": "WidgetTest4",
       "Initializer": "tutorial:show-dialog \"WidgetTest4\" false",
-      "Finalizer": "tutorial:hide-dialog \"WidgetTest4\"\ntutorial:set \"WidgetTest4\" true"
+      "Finalizer": "tutorial:hide-dialog \"WidgetTest4\""
     },
     {
       "Name": "ThingsToTry",
@@ -218,7 +218,7 @@
           "Style": 0,
           "Behavior": 2,
           "Text": "Next",
-          "Callback": "tutorial:forward"
+          "Callback": "tutorial:go \"ShowWidget\" "
         },
         {
           "Style": 1,
@@ -253,10 +253,17 @@
       "Type": 1,
       "Buttons": [
         {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Filter": "tutorial:get \"ShowWidget\" = true",
+          "Callback": "tutorial:go \"WidgetTest\""
+        },
+        {
           "Style": 1,
           "Behavior": 2,
           "Text": "Back",
-          "Callback": "tutorial:back"
+          "Callback": "tutorial:go \"HowItWorks\""
         }
       ],
       "Handlers": [
@@ -264,7 +271,7 @@
           "Category": 1,
           "Source": "Widgets",
           "Type": "Show",
-          "Callback": "tutorial:go \"WidgetTest\" "
+          "Callback": "tutorial:go \"WidgetTest\"\ntutorial:set \"ShowWidget\" true"
         }
       ],
       "DismissBehavior": 1,
@@ -284,14 +291,14 @@
           "Style": 0,
           "Behavior": 2,
           "Text": "Next",
-          "Callback": "tutorial:forward",
+          "Callback": "tutorial:go \"WidgetTest2\"",
           "Filter": "tutorial:get \"WidgetTest\" = true"
         },
         {
           "Style": 1,
           "Behavior": 2,
           "Text": "Back",
-          "Callback": "tutorial:back"
+          "Callback": "tutorial:go \"ShowWidget\" "
         }
       ],
       "Handlers": [
@@ -299,7 +306,7 @@
           "Category": 2,
           "Source": "num-colors",
           "Type": "change",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest\" true\ntutorial:forward"
         }
       ],
       "DismissBehavior": 1,
@@ -310,23 +317,30 @@
       },
       "Name": "WidgetTest",
       "Title": "num-colors ",
-      "Content": "The NUM-COLORS slider controls how many <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color> the <color=green>turtles</color> can be. (Using this will make some of the spirals stand out more, other stand out less.) Try changing the value of <b><i>num-colors</i></b>."
+      "Content": "The <i>num-colors</i> slider controls how many <color=red>c</color><color=orange>o</color><color=navy>l</color><color=magenta>o</color><color=teal>r</color><color=cyan>s</color> the <color=green>turtles</color> can be. (Using this will make some of the spirals stand out more, other stand out less.) Try changing the value of <b><i>num-colors</i></b>."
     },
     {
       "Type": 0,
       "Buttons": [
         {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Filter": "tutorial:get \"WidgetTest2\" = true",
+          "Callback": "tutorial:go \"WidgetTest3\""
+        },
+        {
           "Style": 1,
           "Behavior": 2,
           "Text": "Back",
-          "Callback": "tutorial:back"
+          "Callback": "tutorial:go \"WidgetTest\""
         }
       ],
       "Handlers": [
         {
           "Category": 2,
           "Type": "change",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:go \"WidgetTest3\"",
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest2\" true\ntutorial:go \"WidgetTest3\"",
           "Source": "step-size"
         }
       ],
@@ -337,23 +351,30 @@
       },
       "Name": "WidgetTest2",
       "Title": "step-size ",
-      "Content": "The STEP-SIZE slider controls how far away the <color=green>turtle</color> moves from the center, for each <trigger=clock-tick>clock-tick</trigger>. Try changing the value of <b><i>step-size</i></b>."
+      "Content": "The <i>step-size</i> slider controls how far away the <color=green>turtle</color> moves from the center, for each <trigger=clock-tick>clock-tick</trigger>. Try changing the value of <b><i>step-size</i></b>."
     },
     {
       "Type": 0,
       "Buttons": [
         {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Filter": "tutorial:get \"WidgetTest3\" = true",
+          "Callback": "tutorial:go \"WidgetTest4\""
+        },
+        {
           "Style": 1,
           "Behavior": 2,
           "Text": "Back",
-          "Callback": "tutorial:back"
+          "Callback": "tutorial:go \"WidgetTest2\""
         }
       ],
       "Handlers": [
         {
           "Category": 2,
           "Type": "change",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:go \"WidgetTest4\"",
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest3\" true\ntutorial:go \"WidgetTest4\"",
           "Source": "turn-increment"
         }
       ],
@@ -361,11 +382,18 @@
       "Anchor": 1,
       "Name": "WidgetTest3",
       "Title": "turn-increment ",
-      "Content": "The TURN-INCREMENT slider dictates the degree that each new <color=green>turtle</color> will turn to set its position in the spiral. Try changing the value of <b><i>turn-increment</i></b>.\n"
+      "Content": "The <i>turn-increment</i> slider dictates the degree that each new <color=green>turtle</color> will turn to set its position in the spiral. Try changing the value of <b><i>turn-increment</i></b>.\n"
     },
     {
       "Type": 0,
       "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Filter": "tutorial:get \"WidgetTest4\" = true",
+          "Callback": "tutorial:forward"
+        },
         {
           "Style": 1,
           "Behavior": 2,
@@ -377,7 +405,7 @@
         {
           "Category": 2,
           "Type": "click",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward",
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest4\" true\ntutorial:forward",
           "Source": "set turn-increment 0.618034",
           "Repeated": false
         },
@@ -385,13 +413,13 @@
           "Source": "set turn-increment 0.617",
           "Category": 2,
           "Type": "click",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest4\" true\ntutorial:forward"
         },
         {
           "Source": "set turn-increment 0.619",
           "Category": 2,
           "Type": "click",
-          "Callback": "clear-turtles\nreset-ticks\ntutorial:forward"
+          "Callback": "clear-turtles\nreset-ticks\nworkspace:play\nworkspace:set-speed 1\ntutorial:set \"WidgetTest4\" true\ntutorial:forward"
         }
       ],
       "DismissBehavior": 1,
@@ -401,7 +429,7 @@
       },
       "Name": "WidgetTest4",
       "Title": "set turn-increment ",
-      "Content": "The SET TURN-INCREMENT buttons help to set the TURN-INCREMENT slider to specific values at and around the <color=olive>golden ratio</color>. They are simply there to help achieve precision  that can be difficult with the slider. Try clicking on one of the buttons."
+      "Content": "The <i>set turn-increment</i> buttons help to set the <i>turn-increment</i> slider to specific values at and around the <color=olive>golden ratio</color>. They are simply there to help achieve precision  that can be difficult with the slider. Try clicking on one of the buttons."
     },
     {
       "Type": 0,
@@ -540,7 +568,7 @@
           "Style": 0,
           "Behavior": 2,
           "Text": "Next",
-          "Callback": "tutorial:forward"
+          "Callback": "tutorial:go \"ThingsToTry5\" "
         },
         {
           "Style": 1,
@@ -551,7 +579,7 @@
           "Style": 1,
           "Behavior": 2,
           "Text": "Back",
-          "Callback": "tutorial:back"
+          "Callback": "tutorial:go \"ThingsToTry3\""
         }
       ],
       "DismissBehavior": 1,
