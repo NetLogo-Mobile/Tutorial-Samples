@@ -1,0 +1,879 @@
+ {
+  "Sections": [
+    {
+      "Name": "PersonalConnection",
+      "Activated": true,
+      "Initializer": "; Hide grass-related widgets until the second variant is unlocked\n;set model-version \"sheep-wolves\"\n;widget:hide \"model-version\"\n;widget:hide \"grass-regrowth-time\"\n;widget:hide \"sheep-gain-from-food\"\n\n; Configure the workspace\n; We strongly suggest you refrain from changing widgets temporarily in the entry point, as this might influence how \"Sandbox Mode\" works. \nif (count sheep <= 0 or count wolves <= 0) [ setup ]\nworkspace:set-speed 0.1\nworkspace:pause\n\nworkspace:hide \"Everything\"\ntutorial:set \"tutorial?\" true\ntutorial:show-dialog \"PersonalConnection\" false",
+      "Finalizer": "tutorial:hide-dialog \"PersonalConnection\"",
+      "Filter": "tutorial:in-tutorial?"
+    },
+    {
+      "Name": "Goals",
+      "Initializer": "workspace:pause\ntutorial:show-dialog \"Goals\" false",
+      "Finalizer": "tutorial:hide-dialog \"Goals\""
+    },
+    {
+      "Handlers": [],
+      "Name": "Introduction",
+      "Activated": false,
+      "Initializer": "workspace:set-speed 0.2\nworkspace:play\nset model-version \"sheep-wolves\"\nsetup\ntutorial:show-dialog \"Introduction\" false",
+      "Finalizer": "tutorial:hide-dialog \"Introduction\""
+    },
+    {
+      "Name": "IntroCont",
+      "Initializer": "set model-version \"sheep-wolves\"\nsetup\ntutorial:show-dialog \"IntroCont\" false",
+      "Finalizer": "tutorial:hide-dialog \"IntroCont\""
+    },
+    {
+      "Name": "ThingsToTry",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry\" true",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry\""
+    },
+    {
+      "Name": "IntroCont2",
+      "Initializer": "set model-version \"sheep-wolves-grass\"\nsetup\ntutorial:show-dialog \"IntroCont2\" false",
+      "Finalizer": "tutorial:hide-dialog \"IntroCont2\""
+    },
+    {
+      "Name": "ThingsToTry2",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry2\" true",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry2\""
+    },
+    {
+      "Name": "ThingsToTry3",
+      "Initializer": "tutorial:show-dialog \"ThingsToTry3\" false",
+      "Finalizer": "tutorial:hide-dialog \"ThingsToTry3\""
+    },
+    {
+      "Name": "Questions",
+      "Initializer": "tutorial:show-dialog \"Questions\" false",
+      "Finalizer": "tutorial:hide-dialog \"Questions\""
+    },
+    {
+      "Name": "Congratulation",
+      "Initializer": "workspace:hide \"Everything\"\ntutorial:show-dialog \"Congratulation\" false",
+      "Activated": false,
+      "Finalizer": "tutorial:hide-dialog \"Congratulation\""
+    },
+    {
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Stability",
+          "Callback": "tutorial:show-dialog \"Stability\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Predator",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Predator\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Prey",
+          "Callback": "tutorial:show-dialog \"Prey\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Ecosystem",
+          "Callback": "tutorial:show-dialog \"Ecosystem\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Type": "Trigger",
+          "Source": "Extinction",
+          "Callback": "tutorial:show-dialog \"Extinction\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Population",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Population\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Reproduction",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Reproduction\" false",
+          "Repeated": true
+        },
+        {
+          "Category": 4,
+          "Source": "Species",
+          "Type": "Trigger",
+          "Callback": "tutorial:show-dialog \"Species\" false",
+          "Repeated": true
+        }
+      ],
+      "Name": "Glossary",
+      "Initializer": "; So this guy is here to ensure that all glossary triggers are activated",
+      "Activated": true
+    }
+  ],
+  "Dialogs": [
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "PersonalConnection",
+      "Title": "Welcome to the Wolf Sheep Predation Model! ",
+      "Content": "Imagine you are standing in a <color=green>green pasture </color> on a beautiful, <color=#b3b300ff>sunny </color> day. A few hundred feet away, you observe a <color=grey>flock of sheep </color> meandering in the <color=#654321ff>fields</color>, feasting on the plentiful <color=green>grass </color>. Suddenly, a <color=#a07348ff>pack of wolves </color> appear and begin chasing the <color=grey>sheep </color> that have already begun to disperse. How do the <trigger=population>populations</trigger> of the <trigger=predator,#a07348ff>predator</trigger> and <trigger=prey,grey>prey</trigger> change over time  due to predation? Click <b>next</b> to explore this further more. "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Goals",
+      "Content": " Understand the <trigger=population>population</trigger> dynamics between <trigger=predator,#a07348ff>predator</trigger> and <trigger=prey,grey>prey</trigger> <trigger=species>species</trigger> \n Observe the difference between modeling in a <color=green>nutrient rich </color> environment and a <color=#654321ff>resource-limited</color> environment\n Examine factors that when changed, result in differing dynamics between <color=#a07348ff>predator</color> and <color=grey>prey</color> \n Explore how manipulating these factors affect populations over time  and their <trigger=stability,blue>stability </trigger> ",
+      "Title": "Goals "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Introduction",
+      "Content": "This model explores the <trigger=stability,blue>stability </trigger> of <trigger=predator,#a07348ff>predator</trigger>-<trigger=prey,grey>prey</trigger> <trigger=ecosystem>ecosystems</trigger> . Such a system is called <color=red>unstable </color> if it tends to result in <trigger=extinction>extinction </trigger> for one or more <trigger=species>species</trigger> involved. In contrast, a system is <color=blue>stable </color> if it tends to maintain itself over time , despite fluctuations  in <trigger=population>population</trigger> sizes.",
+      "Title": "Introduction"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "What about the population of the grass?",
+          "Callback": "tutorial:show-dialog \"InfiniteGrass\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "In what condition is this variation well-suited for? ",
+          "Callback": "tutorial:show-dialog \"Well-Suited\" false"
+        },
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Callback": "tutorial:back",
+          "Text": "Back "
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "IntroCont",
+      "Title": "First Variation of Model ",
+      "Content": "There are two main variations to this model. In the first variation, the \"<color=grey>sheep </color>-<color=#a07348ff>wolves </color>\" version, <color=#a07348ff>wolves </color> and <color=grey>sheep </color> wander randomly around the <color=#654321ff>landscape </color>, while the <color=#a07348ff>wolves </color> look for <color=grey>sheep </color> to prey on. Each step costs the <color=#a07348ff>wolves </color> one unit of <color=#b3b300ff>energy </color>, and they must eat <color=grey>sheep </color> in order to replenish their <color=#b3b300ff>energy </color> - when they run out of <color=#b3b300ff>energy </color> they die . To allow the <trigger=population>population</trigger> to continue, each <color=#a07348ff>wolf </color> or <color=grey>sheep </color> has a fixed probability of <trigger=reproduction>reproducing</trigger> at each time  step."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"IntroCont\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "InfiniteGrass",
+      "Title": "What about the population of the grass? ",
+      "Content": "In this variation, we model the <color=green>grass </color> as \"infinite \" so that <color=grey>sheep </color> always have enough to eat, and we don't explicitly model the eating or growing of <color=green>grass </color>. As such, <color=grey>sheep </color> don't either gain or lose <color=#b3b300ff>energy </color> by eating or moving. "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"IntroCont\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Well-Suited",
+      "Content": "This variation produces interesting <trigger=population>population</trigger> dynamics, but is ultimately <color=red>unstable </color>. This variation of the model is particularly well-suited to interacting <trigger=species>species</trigger> in a <color=green>rich nutrient</color> environment, such as two strains of bacteria in a petri dish.",
+      "Title": "In what condition is this variation well-suited for? "
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "In what condition is this variation well-suited for? ",
+          "Callback": "tutorial:show-dialog \"Well-Suited2\" false"
+        },
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "IntroCont2",
+      "Title": "Second Variation of Model ",
+      "Content": "The second variation, the \"<color=grey>sheep </color>-<color=#a07348ff>wolves </color>-<color=green>grass </color>\" version explictly models <color=green>grass </color> in addition to <color=#a07348ff>wolves </color> and <color=grey>sheep </color>. The behavior of the <color=#a07348ff>wolves </color> is identical to the first variation, however this time the <color=grey>sheep </color> must eat <color=green>grass </color> in order to maintain their <color=#b3b300ff>energy </color> - when they run out of <color=#b3b300ff>energy </color> they die . One unit of <color=#b3b300ff>energy </color> is deducted for every step a <color=grey>sheep </color> takes. Once <color=green>grass </color> is eaten it will only regrow after a fixed amount of time . "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"IntroCont2\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Content": "This variation is more complex than the first, but it is generally <color=blue>stable </color>. It is a closer match to the classic Lotka Volterra <trigger=population>population</trigger> oscillation models. The classic LV models though assume the populations can take on real values, but in small populations these models underestimate <trigger=extinction>extinctions </trigger> and agent-based models such as the ones here, provide more realistic results.",
+      "Name": "Well-Suited2",
+      "Title": "In what condition is this variation well-suited for?"
+    },
+    {
+      "Type": 4,
+      "Buttons": [],
+      "Handlers": [],
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Spotlight": {
+        "Region": "Widgets",
+        "Subregion": "num-colors"
+      },
+      "Name": "Initial-Number-Sheep",
+      "Title": "initial-number-sheep ",
+      "Content": "The initial size of <color=grey>sheep </color> <trigger=population>population</trigger>",
+      "Target": "initial-number-sheep"
+    },
+    {
+      "Type": 4,
+      "Buttons": [],
+      "Handlers": [],
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Sheep-Gain-From-Food",
+      "Title": "sheep-gain-from-food ",
+      "Content": "The amount of <color=#b3b300ff>energy </color> <color=grey>sheep </color> get for every <color=green>grass patch </color> eaten (note this is not used in the <color=grey>sheep </color>-<color=#a07348ff>wolves </color> model version)",
+      "Target": "sheep-gain-from-food"
+    },
+    {
+      "Type": 4,
+      "Buttons": [],
+      "Handlers": [],
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Spotlight": {
+        "Region": "Widget "
+      },
+      "Name": "Sheep-Reproduce",
+      "Title": "sheep-reproduce ",
+      "Content": "The probability of a <color=grey>sheep </color> <trigger=reproduction>reproducing</trigger> at each time  step",
+      "Target": "sheep-reproduce"
+    },
+    {
+      "Type": 4,
+      "Buttons": [],
+      "Handlers": [],
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 2,
+      "Spotlight": {
+        "Region": "Widget",
+        "Subregion": "Monitors"
+      },
+      "Name": "Initial-Number-Wolves",
+      "Title": "initial-number-wolves ",
+      "Content": "The initial size of <color=#a07348ff>wolf </color> <trigger=population>population</trigger>",
+      "Target": "initial-number-wolves"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Wolf-Gain-From-Food",
+      "Title": "wolf-gain-from-food ",
+      "Target": "wolf-gain-from-food",
+      "Content": "The amount of <color=#b3b300ff>energy </color> <color=#a07348ff>wolves </color> get for every <color=grey>sheep </color> eaten"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Wolf-Reproduce",
+      "Title": "wolf-reproduce ",
+      "Target": "wolf-reproduce",
+      "Content": "The probability of a <color=#a07348ff>wolf </color> <trigger=reproduction>reproducing</trigger> at each time  step"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Grass-Regrowth-Time",
+      "Title": "grass-regrowth-time ",
+      "Target": "grass-regrowth-time",
+      "Content": "How long it takes for <color=green>grass </color> to regrow once it is eaten (note this is not used in the <color=grey>sheep </color>-<color=#a07348ff>wolves </color> model version)"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Monitor-Sheep",
+      "Title": "sheep ",
+      "Target": "sheep",
+      "Content": "The current size of the <color=grey>sheep </color> <trigger=population>population</trigger>"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Monitor-Wolves",
+      "Title": "wolves ",
+      "Target": "wolves",
+      "Content": "The current size of the <color=#a07348ff>wolf </color> <trigger=population>population</trigger>"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Monitor-Grass",
+      "Title": "grass ",
+      "Target": "grass",
+      "Content": "The current size of the <color=green>grass </color> <trigger=population>population</trigger>"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Show-Energy",
+      "Title": "show-energy? ",
+      "Target": "show-energy?",
+      "Content": "Whether or not to show the <color=#b3b300ff>energy </color> of each animal in the world"
+    },
+    {
+      "Type": 4,
+      "DismissBehavior": 3,
+      "TargetType": 0,
+      "Anchor": 1,
+      "Name": "Model-Version",
+      "Title": "model-version",
+      "Content": "Whether we model <color=grey>sheep </color> <color=#a07348ff>wolves </color> and <color=green>grass </color> or just <color=grey>sheep </color> and <color=#a07348ff>wolves </color>",
+      "Target": "model-version"
+    },
+    {
+      "Type": 4,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:show-dialog \"Plots2\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Hide"
+        }
+      ],
+      "DismissBehavior": 1,
+      "TargetType": 2,
+      "Anchor": 1,
+      "Name": "Plots",
+      "Title": "Plot ",
+      "Content": "Here, you can watch the <color=#a07348ff>wolf </color>, <color=grey>sheep </color>, and <color=green>grass </color> <trigger=population>populations</trigger> fluctuate  over time . When running the <color=grey>sheep </color>-<color=#a07348ff>wolves </color> model variation, watch as the <color=grey>sheep </color> and <color=#a07348ff>wolf </color> populations fluctuate . Notice that increases and decreases in the sizes of each population are related. In what way are they related? What eventually happens?",
+      "Target": "populations"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:show-dialog \"Plots3\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"Plots\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Hide"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Plots2",
+      "Title": "Plot ",
+      "Content": "In the <color=grey>sheep </color>-<color=#a07348ff>wolves </color>-<color=green>grass </color> model variation, notice the <color=green>green line</color> added to the <trigger=population>population</trigger> plot representing fluctuations  in the amount of <color=green>grass </color>. How do the sizes of the three populations appear to relate now? What is the explanation for this?"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"Plots2\" false"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Hide"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Plots3",
+      "Content": "Why do you suppose that some variations of the model might be <color=blue>stable </color> while others are not?",
+      "Title": "Plot "
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Skip",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Submit",
+          "Source": "ThingsToTry-1",
+          "Callback": "tutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "ThingsToTry",
+      "Content": "Can you find any parameters that generate a <color=blue>stable </color> <trigger=ecosystem>ecosystem</trigger>  in the <color=grey>sheep </color>-<color=#a07348ff>wolves </color> model variation?",
+      "Input": "ThingsToTry-1"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Skip",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [
+        {
+          "Category": 4,
+          "Type": "Submit",
+          "Source": "ThingsToTry-2",
+          "Callback": "tutorial:forward"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "ThingsToTry2",
+      "Content": "Notice that under <color=blue>stable </color> settings, the <trigger=population>populations</trigger> tend to fluctuate  at a predictable pace. Can you find any parameters that will speed this up  or slow it down ?",
+      "Input": "ThingsToTry-2"
+    },
+    {
+      "Type": 2,
+      "Buttons": [
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Sensitivity of Parameters ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.1\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Stability When Wolf Population is Zero ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.2\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Stability With Only Wolves and Sheep (No Grass) ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.3\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Changing the Reproduction Rules ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.4\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Sheep Flock ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.5\" false"
+        },
+        {
+          "Style": 2,
+          "Behavior": 2,
+          "Text": "Wolves Chasing Sheep ",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3.6\" false"
+        },
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "Handlers": [],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3",
+      "Title": "Things to Try",
+      "Content": "To further explore the model, click on any of the following topics."
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.1",
+      "Content": "Try adjusting the parameters under various settings. How sensitive is the <color=blue>stability </color> of the model to the particular parameters?"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.2",
+      "Content": "Try running the <color=grey>sheep </color>-<color=#a07348ff>wolves </color>-<color=green>grass </color> model variation, but setting <I>initial-number-wolves</I> to 0. This gives a <color=blue>stable </color> <trigger=ecosystem>ecosystem</trigger>  with only <color=grey>sheep </color> and <color=green>grass </color>. Why might this be <color=blue>stable </color> while the variation with only <color=grey>sheep </color> and <color=#a07348ff>wolves </color> is not?"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.3",
+      "Content": "There are a number ways to alter the model so that it will be <color=blue>stable </color> with only <color=#a07348ff>wolves </color> and <color=grey>sheep </color> (no <color=green>grass </color>). Some will require new elements to be coded in or existing behaviors to be changed. Can you develop such a version?"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.4",
+      "Content": "Try changing the <trigger=reproduction>reproduction</trigger> rules -- for example, what would happen if reproduction depended on <color=#b3b300ff>energy </color> rather than being determined by a fixed probability?"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.5",
+      "Content": "Can you modify the model so the <color=grey>sheep </color> will flock?"
+    },
+    {
+      "Type": 5,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:show-dialog \"ThingsToTry3\" false"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Name": "ThingsToTry3.6",
+      "Content": "Can you modify the model so that <color=#a07348ff>wolves </color> actively chase <color=grey>sheep </color>?"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "An <trigger=ecosystem>ecosystem</trigger>  is said to possess ecological <color=blue>stability </color> (or equilibrium) if it is capable of returning to its equilibrium state after a perturbation (a capacity known as resilience) or does not experience unexpected large changes in its characteristics across time .",
+      "Name": "Stability",
+      "Title": "Stability "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "In ecology, <color=#a07348ff>predators</color> are organisms that live by <trigger=prey,grey>preying</trigger> on other organisms for food .",
+      "Name": "Predator",
+      "Title": "Predator"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "In ecology, <color=grey>preys</color> are organisms that <trigger=predator,#a07348ff>predator</trigger> kill for food .",
+      "Name": "Prey",
+      "Title": "Prey"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "An ecosystem  or biome describes a single environment and every <color=green>living (biotic)</color> organism  and <color=#555555ff>non-living (abiotic)</color> factor  that is contained within it or characterizes it. An ecosystem  embodies every aspect of a single habitat, including all interactions between its different elements.",
+      "Name": "Ecosystem",
+      "Title": "Ecosystem "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 2,
+      "Content": "Extinction  is the dying out or extermination of a <trigger=species>species</trigger>. Extinction  occurs when species are diminished because of environmental forces (habitat fragmentation, global  change, natural disaster , overexploitation of species for human use ) or because of evolutionary changes in their members (genetic  inbreeding, poor <trigger=reproduction>reproduction</trigger>, decline in <trigger=population>population</trigger> numbers).",
+      "Name": "Extinction",
+      "Title": "Extinction "
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Population",
+      "Title": "Population",
+      "Content": "A population is the number of organisms of the same <trigger=species>species</trigger> that live in a particular geographic area  at the same time , with the capability of producing fertile offspring ."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Reproduction",
+      "Title": "Reproduction",
+      "Content": "Reproduction is a biological process by which an organism reproduces an offspring  who is biologically similar to the organism. Reproduction enables and ensures the continuity  of <trigger=species>species</trigger>, generation after generation."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 3,
+          "Text": "Back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Species",
+      "Content": "A biological species is a group of organisms that can <trigger=reproduction>reproduce</trigger> with one another in nature and produce fertile offspring .",
+      "Title": "Species"
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Text": "Next",
+          "Callback": "tutorial:forward"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Name": "Questions",
+      "Title": "Questions?",
+      "Content": "Want to look at the community's or your answers to the questions asked in this model? Click on <b>Go to Q&A Panel</b>."
+    },
+    {
+      "Type": 0,
+      "Buttons": [
+        {
+          "Style": 0,
+          "Behavior": 2,
+          "Callback": "tutorial:deactivate \"Congratulation\"",
+          "Text": "Exit Tutorial"
+        },
+        {
+          "Style": 1,
+          "Behavior": 2,
+          "Text": "Back",
+          "Callback": "tutorial:back"
+        }
+      ],
+      "DismissBehavior": 1,
+      "Anchor": 1,
+      "Spotlight": {},
+      "Name": "Congratulation",
+      "Content": "Well done! You have completed the Wolf Sheep Predation model tutorial! Time to play with the model!",
+      "Title": "Congratulations! "
+    }
+  ]
+}
